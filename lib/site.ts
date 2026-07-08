@@ -23,15 +23,15 @@ export const site = {
     encodeURIComponent("The Russian Tailor, 612 View Street, Victoria BC V8W 1J5"),
   facebook: "https://www.facebook.com/p/The-Russian-Tailor-100063538961330/",
   hours: [
-    { day: "Monday", time: "10:00 – 5:30" },
-    { day: "Tuesday", time: "10:00 – 5:30" },
+    { day: "Monday", time: "10:00 am – 5:30 pm" },
+    { day: "Tuesday", time: "10:00 am – 5:30 pm" },
     { day: "Wednesday", time: "Closed" },
-    { day: "Thursday", time: "10:00 – 5:30" },
-    { day: "Friday", time: "10:00 – 5:30" },
+    { day: "Thursday", time: "10:00 am – 5:30 pm" },
+    { day: "Friday", time: "10:00 am – 5:30 pm" },
     { day: "Saturday", time: "Closed" },
     { day: "Sunday", time: "Closed" },
   ],
-  hoursSummary: "Mon · Tue · Thu · Fri, 10:00 – 5:30",
+  hoursSummary: "Mon · Tue · Thu · Fri, 10:00 am – 5:30 pm",
 } as const;
 
 export const nav = [

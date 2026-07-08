@@ -10,25 +10,33 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
-      <p className="label">Page not found</p>
-      <h1 className="mt-6 max-w-3xl font-display text-[length:var(--text-hero)] leading-[1.05] tracking-tight">
-        This page didn&rsquo;t <em className="font-light text-thread-deep">make the cut</em>
-      </h1>
-      <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft">
-        The page you&rsquo;re looking for doesn&rsquo;t exist. Head back to the
-        home page, or call {site.phone} if you were trying to reach the shop.
-      </p>
-      <div className="mt-8 flex flex-wrap items-center gap-4">
-        <Link
-          href="/"
-          className="bg-ink px-6 py-3.5 font-semibold text-paper transition-colors hover:bg-thread-deep"
-        >
-          Back to home
-        </Link>
-        <a href={site.phoneHref} className="stitch-link font-medium">
-          Call {site.phone}
-        </a>
+    <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
+      <div className="mx-auto max-w-md">
+        <div className="ticket ticket-tilt-l">
+          <p className="tape text-ledger-red">Pattern not found</p>
+          <p className="mt-4 font-serif text-2xl font-semibold">
+            No. 404
+          </p>
+          <p className="mt-3 font-serif leading-relaxed text-ink-soft">
+            This page isn&rsquo;t on the rail. Head back to the front of the
+            shop, or call {site.phone} if you were trying to reach us.
+          </p>
+          <p className="chalk-note mt-5">cut away, long ago</p>
+        </div>
+        <div className="mt-12 flex flex-wrap items-center gap-6">
+          <Link
+            href="/"
+            className="tape border border-gold px-6 py-3.5 text-sm text-gold transition-colors hover:bg-gold hover:text-green-deep"
+          >
+            Back to the shop
+          </Link>
+          <a
+            href={site.phoneHref}
+            className="font-serif italic text-chalk underline decoration-gold/50 underline-offset-4 hover:text-gold-bright"
+          >
+            Call {site.phone}
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -1,20 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Instrument_Sans } from "next/font/google";
+import { Besley, Archivo, Caveat } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const besley = Besley({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  variable: "--font-fraunces",
-  axes: ["opsz"],
+  variable: "--font-besley",
 });
 
-const instrument = Instrument_Sans({
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-instrument",
+  style: ["normal", "italic"],
+  variable: "--font-archivo",
+  axes: ["wdth"],
+});
+
+const caveat = Caveat({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-caveat",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://russian-tailor.vercel.app";
@@ -26,19 +32,12 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description:
-    "Custom tailoring and expert alterations in downtown Victoria, BC. Master tailor Irina Sitonin — suits, shirts, bridal gowns, and formal wear. Call 250-388-5543 to book.",
-  keywords: [
-    "tailor Victoria BC",
-    "clothing alterations Victoria",
-    "wedding dress alterations Victoria",
-    "custom suits Victoria BC",
-    "The Russian Tailor",
-  ],
+    "Custom tailoring and expert alterations in downtown Victoria, BC. Master tailor Irina Sitonin: suits, shirts, bridal gowns, and formal wear. Call 250-388-5543 to book.",
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f5f2ea",
+  themeColor: "#16241c",
 };
 
 const localBusinessJsonLd = {
@@ -76,7 +75,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-CA"
-      className={`${fraunces.variable} ${instrument.variable}`}
+      className={`${besley.variable} ${archivo.variable} ${caveat.variable}`}
       suppressHydrationWarning
     >
       <body>
@@ -88,7 +87,7 @@ export default function RootLayout({
         />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:bg-gold focus:px-4 focus:py-2 focus:text-green-deep"
         >
           Skip to main content
         </a>
