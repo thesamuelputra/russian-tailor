@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warm paper & ink, thread-crimson accent (Irina's red pincushion), sage whisper from the old shop green */
+  --color-paper: oklch(96.5% 0.012 85);
+  --color-cream: oklch(93.2% 0.02 85);
+  --color-ink: oklch(25% 0.022 50);
+  --color-ink-soft: oklch(44% 0.024 50);
+  --color-thread: oklch(50% 0.185 25);
+  --color-thread-deep: oklch(41% 0.16 25);
+  --color-sage: oklch(58% 0.055 130);
+  --color-line: oklch(86.5% 0.016 85);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-instrument);
+
+  --text-hero: clamp(2.6rem, 1.2rem + 6vw, 5.4rem);
+  --text-title: clamp(2rem, 1.1rem + 3.4vw, 3.4rem);
+  --text-subtitle: clamp(1.5rem, 1.1rem + 1.6vw, 2.2rem);
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::selection {
+  background: var(--color-thread);
+  color: var(--color-paper);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-thread);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Basting-stitch rule — the site's signature divider */
+.stitch-rule {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-thread) 0,
+    var(--color-thread) 12px,
+    transparent 12px,
+    transparent 20px
+  );
+}
+
+.stitch-rule--ink {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-line) 0,
+    var(--color-line) 12px,
+    transparent 12px,
+    transparent 20px
+  );
+}
+
+/* Measuring-tape strip: fine ticks, a tall tick every fifth */
+.tape {
+  height: 18px;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--color-ink) 0,
+      var(--color-ink) 1px,
+      transparent 1px,
+      transparent 50px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--color-ink) 55%, transparent) 0,
+      color-mix(in oklch, var(--color-ink) 55%, transparent) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  background-size:
+    100% 100%,
+    100% 55%;
+  background-repeat: no-repeat;
+  background-position:
+    0 0,
+    0 0;
+  opacity: 0.35;
+}
+
+/* Small-caps section label with a leading stitch dash */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-thread-deep);
+}
+
+.label::before {
+  content: "";
+  width: 2rem;
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-thread) 0,
+    var(--color-thread) 7px,
+    transparent 7px,
+    transparent 12px
+  );
+}
+
+/* Dashed “stitched” underline for inline links */
+.stitch-link {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: color-mix(in oklch, var(--color-thread) 55%, transparent);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.25s var(--ease-out-quint), color 0.25s var(--ease-out-quint);
+}
+
+.stitch-link:hover {
+  color: var(--color-thread-deep);
+  text-decoration-color: var(--color-thread);
+}
+
+/* Scroll reveal — noscript fallback in layout keeps content visible without JS */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.8s var(--ease-out-quint),
+    transform 0.8s var(--ease-out-quint);
+}
+
+.reveal.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero entrance — pure CSS, staggered via --stagger */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise-in 0.9s var(--ease-out-quint) both;
+  animation-delay: calc(var(--stagger, 0) * 110ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .rise {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
