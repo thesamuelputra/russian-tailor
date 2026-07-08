@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { nav, site } from "@/lib/site";
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setOpen(false);
@@ -15,16 +16,38 @@ export function Header() {
 
   useEffect(() => {
     if (!open) return;
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
+    // The overlay is lg:hidden — close it if the viewport grows past the breakpoint,
+    // otherwise the body scroll lock would linger invisibly.
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onBreakpoint = (e: MediaQueryListEvent) => {
+      if (e.matches) setOpen(false);
+    };
+    // Keep keyboard and screen-reader focus inside the open menu.
+    const inertTargets = [
+      document.getElementById("main"),
+      document.querySelector("footer"),
+    ].filter(Boolean) as HTMLElement[];
+
+    inertTargets.forEach((el) => el.setAttribute("inert", ""));
     document.addEventListener("keydown", onKey);
+    mq.addEventListener("change", onBreakpoint);
     document.body.style.overflow = "hidden";
+    const toggle = toggleRef.current;
+
     return () => {
       document.removeEventListener("keydown", onKey);
+      mq.removeEventListener("change", onBreakpoint);
+      inertTargets.forEach((el) => el.removeAttribute("inert"));
       document.body.style.overflow = "";
+      toggle?.focus();
     };
   }, [open]);
+
+  const closeMenu = () => setOpen(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper">
@@ -66,6 +89,7 @@ export function Header() {
 
         <button
           type="button"
+          ref={toggleRef}
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -99,6 +123,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={closeMenu}
                   aria-current={active ? "page" : undefined}
                   style={{ "--stagger": i } as React.CSSProperties}
                   className={`rise border-b border-line py-5 font-display text-3xl ${
@@ -111,6 +136,7 @@ export function Header() {
             })}
             <a
               href={site.phoneHref}
+              onClick={closeMenu}
               style={{ "--stagger": nav.length } as React.CSSProperties}
               className="rise mt-8 inline-block bg-ink px-6 py-4 text-center text-lg font-semibold text-paper"
             >

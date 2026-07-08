@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
+import { pageMeta } from "@/lib/meta";
 import { site } from "@/lib/site";
 import irinaShop from "@/public/images/irina-shop.jpg";
 import fittingSuit from "@/public/images/fitting-suit.jpg";
@@ -8,6 +9,13 @@ import bridalFitting from "@/public/images/bridal-fitting.jpg";
 import suitNavy from "@/public/images/suit-navy.jpg";
 import shirtRack from "@/public/images/shirt-rack.jpg";
 import promGroup from "@/public/images/prom-group.jpg";
+
+export const metadata = pageMeta({
+  absoluteTitle: `${site.name} — Custom Tailoring & Expert Alterations in Victoria, BC`,
+  description:
+    "Custom tailoring and expert alterations in downtown Victoria, BC. Master tailor Irina Sitonin — suits, shirts, bridal gowns, and formal wear. Call 250-388-5543 to book.",
+  path: "/",
+});
 
 export default function HomePage() {
   return (

@@ -10,6 +10,8 @@
   --color-thread-deep: oklch(41% 0.16 25);
   --color-sage: oklch(58% 0.055 130);
   --color-line: oklch(86.5% 0.016 85);
+  /* Form-control boundaries: >=3:1 against paper (WCAG 1.4.11) */
+  --color-line-strong: oklch(60% 0.025 60);
 
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-instrument);
@@ -42,6 +44,11 @@ body {
   outline: 2px solid var(--color-thread);
   outline-offset: 3px;
   border-radius: 1px;
+}
+
+/* Thread-red fails 3:1 on the dark ink sections — use paper there (14.5:1) */
+.bg-ink :focus-visible {
+  outline-color: var(--color-paper);
 }
 
 /* Basting-stitch rule — the site's signature divider */
@@ -133,8 +140,10 @@ body {
   text-decoration-color: var(--color-thread);
 }
 
-/* Scroll reveal — noscript fallback in layout keeps content visible without JS */
-.reveal {
+/* Scroll reveal — content is visible by default; the hidden starting state only
+   applies once an inline script has confirmed JS is running (html.js), so a
+   failed or blocked bundle never leaves the page blank. */
+html.js .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition:
@@ -142,7 +151,7 @@ body {
     transform 0.8s var(--ease-out-quint);
 }
 
-.reveal.is-shown {
+html.js .reveal.is-shown {
   opacity: 1;
   transform: none;
 }
@@ -168,6 +177,7 @@ body {
   html {
     scroll-behavior: auto;
   }
+  html.js .reveal,
   .reveal,
   .rise {
     animation: none;

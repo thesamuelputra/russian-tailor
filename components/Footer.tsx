@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { nav, site } from "@/lib/site";
+import { Year } from "@/components/Year";
 
 export function Footer() {
   return (
@@ -81,7 +82,7 @@ export function Footer() {
 
         <div className="stitch-rule--ink stitch-rule mt-12" aria-hidden />
         <p className="mt-6 text-xs text-ink-soft">
-          © {new Date().getFullYear()} The Russian Tailor. All rights reserved.
+          © <Year /> The Russian Tailor. All rights reserved.
         </p>
       </div>
     </footer>

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  description: "The page you're looking for doesn't exist.",
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   return (

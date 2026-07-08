@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
+import { pageMeta } from "@/lib/meta";
 import { site } from "@/lib/site";
 import fittingSuit from "@/public/images/fitting-suit.jpg";
 import bridalFitting from "@/public/images/bridal-fitting.jpg";
 import irinaCutting from "@/public/images/irina-cutting.jpg";
 import weddingCouple from "@/public/images/wedding-couple.jpg";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Clothing Repair & Alteration",
   description:
     "Expert clothing alterations in Victoria, BC — suits, wedding and bridal gowns, prom and formal dresses. The premier alterations house where a dress becomes your dream gown.",
-};
+  path: "/clothing-repair-and-alteration",
+});
 
 const suitAlterations = [
   {

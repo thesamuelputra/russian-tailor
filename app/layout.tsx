@@ -34,15 +34,6 @@ export const metadata: Metadata = {
     "custom suits Victoria BC",
     "The Russian Tailor",
   ],
-  openGraph: {
-    type: "website",
-    locale: "en_CA",
-    url: siteUrl,
-    siteName: site.name,
-    title: `${site.name} — Custom Tailoring & Expert Alterations in Victoria, BC`,
-    description:
-      "Master tailor Irina Sitonin. Suits, shirts, bridal gowns, and formal wear — made to fit, in downtown Victoria.",
-  },
   robots: { index: true, follow: true },
 };
 
@@ -83,11 +74,18 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-CA" className={`${fraunces.variable} ${instrument.variable}`}>
+    <html
+      lang="en-CA"
+      className={`${fraunces.variable} ${instrument.variable}`}
+      suppressHydrationWarning
+    >
       <body>
-        <noscript>
-          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
-        </noscript>
+        {/* Marks JS as live before first paint; .reveal only hides under html.js */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add("js")`,
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"

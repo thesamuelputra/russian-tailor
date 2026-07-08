@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
+import { pageMeta } from "@/lib/meta";
 import { site } from "@/lib/site";
 import irinaShop from "@/public/images/irina-shop.jpg";
 import irinaCutting from "@/public/images/irina-cutting.jpg";
 import fittingSuit from "@/public/images/fitting-suit.jpg";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "About Irina Sitonin",
   description:
     "Master tailor Irina Sitonin was taught to sew in St. Petersburg before she was five. Her Victoria shop is the culmination of a lifetime of tailoring experience.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import Image, { type StaticImageData } from "next/image";
 import { Reveal } from "@/components/Reveal";
+import { pageMeta } from "@/lib/meta";
 import { site } from "@/lib/site";
 import irinaShop from "@/public/images/irina-shop.jpg";
 import irinaCutting from "@/public/images/irina-cutting.jpg";
@@ -30,11 +30,12 @@ import shirtsBurgundy from "@/public/images/shirts-burgundy.jpg";
 import shirtCufflink from "@/public/images/shirt-cufflink.jpg";
 import shirtCuffWhite from "@/public/images/shirt-cuff-white.jpg";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Photo Gallery",
   description:
     "Photos from The Russian Tailor in Victoria, BC — the shop, fittings in progress, custom menswear and womenswear, and made-to-measure shirt details.",
-};
+  path: "/photos",
+});
 
 type GallerySection = {
   id: string;
@@ -87,7 +88,7 @@ const sections: GallerySection[] = [
   {
     id: "shirt-details",
     title: "Made-to-measure details",
-    note: "Collars, cuffs, and monograms from the shirt workshop.",
+    note: "Collar, cuff, and monogram details from made-to-measure shirts.",
     photos: [
       { src: shirtRack, alt: "Rack of finished custom shirts in stripes and solids" },
       { src: shirtBlue, alt: "Light blue shirt with contrast double collar" },

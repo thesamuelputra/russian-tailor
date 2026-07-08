@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import { pageMeta } from "@/lib/meta";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Contact & Hours",
   description:
     "Book an appointment at The Russian Tailor: call 250-388-5543 or email russiantailor@gmail.com. #203 – 612 View Street, Victoria BC. Closed Wednesdays and weekends.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

@@ -22,7 +22,7 @@ export function ContactForm() {
   };
 
   const inputClasses =
-    "w-full border border-line bg-paper px-4 py-3 text-ink placeholder:text-ink-soft/60 focus:border-thread";
+    "w-full border border-line-strong bg-paper px-4 py-3 text-ink placeholder:text-ink-soft/60 focus:border-thread";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">

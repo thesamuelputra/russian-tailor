@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
+import { pageMeta } from "@/lib/meta";
 import { site } from "@/lib/site";
 import jacketGold from "@/public/images/jacket-gold.jpg";
 import jacketPlaidBlue from "@/public/images/jacket-plaid-blue.jpg";
@@ -12,11 +12,12 @@ import shirtBlue from "@/public/images/shirt-blue.jpg";
 import shirtsBurgundy from "@/public/images/shirts-burgundy.jpg";
 import shirtRack from "@/public/images/shirt-rack.jpg";
 
-export const metadata: Metadata = {
+export const metadata = pageMeta({
   title: "Custom Tailoring — Suits, Shirts & Dresses",
   description:
     "Bespoke custom, made to measure, and customized off-the-rack tailoring in Victoria, BC. A thousand fabrics including Holland & Sherry, Dormeuil, and MARZONI.",
-};
+  path: "/custom-tailoring",
+});
 
 const fabricHouses = [
   "MARZONI",
