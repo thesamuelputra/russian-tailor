@@ -62,7 +62,7 @@ export default function HomePage() {
 
           {/* Shop photo — inset on mobile, offset right on large screens */}
           <div
-            className="rise mt-12 lg:absolute lg:top-24 lg:right-8 lg:mt-0 lg:w-[36%] xl:right-[max(2rem,calc((100vw-72rem)/2))]"
+            className="rise mt-12 lg:absolute lg:top-24 lg:right-8 lg:mt-0 lg:w-[36%] xl:right-[max(2rem,calc((100vw-72rem)/2))] xl:w-[420px]"
             style={{ "--stagger": 3 } as React.CSSProperties}
           >
             <figure>
