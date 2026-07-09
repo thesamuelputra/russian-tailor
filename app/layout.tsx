@@ -1,26 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Besley, Archivo, Caveat } from "next/font/google";
+import { Italiana, Newsreader } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const besley = Besley({
+const italiana = Italiana({
+  weight: "400",
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-besley",
+  variable: "--font-italiana",
 });
 
-const archivo = Archivo({
+const newsreader = Newsreader({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  variable: "--font-archivo",
-  axes: ["wdth"],
-});
-
-const caveat = Caveat({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-caveat",
+  axes: ["opsz"],
+  variable: "--font-newsreader",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://russian-tailor.vercel.app";
@@ -28,8 +23,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://russian-tailor.verc
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${site.name} — Custom Tailoring & Expert Alterations in Victoria, BC`,
-    template: `%s — ${site.name}`,
+    default: `${site.name} · Custom Tailoring & Expert Alterations in Victoria, BC`,
+    template: `%s · ${site.name}`,
   },
   description:
     "Custom tailoring and expert alterations in downtown Victoria, BC. Master tailor Irina Sitonin: suits, shirts, bridal gowns, and formal wear. Call 250-388-5543 to book.",
@@ -37,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#16241c",
+  themeColor: "#f7f4ec",
 };
 
 const localBusinessJsonLd = {
@@ -75,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-CA"
-      className={`${besley.variable} ${archivo.variable} ${caveat.variable}`}
+      className={`${italiana.variable} ${newsreader.variable}`}
       suppressHydrationWarning
     >
       <body>
@@ -87,7 +82,7 @@ export default function RootLayout({
         />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:bg-gold focus:px-4 focus:py-2 focus:text-green-deep"
+          className="caps sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:bg-ink focus:px-4 focus:py-2 focus:text-bone"
         >
           Skip to main content
         </a>

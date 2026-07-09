@@ -24,38 +24,37 @@ Primary conversion: a phone call (250-388-5543). The shop books by phone.
 
 ## Brand voice (physical-object words)
 
-**hushed, hand-cut, burnished** — like the interior of a Savile Row fitting room:
-dark wool, a brass plate, a chalk line on cloth.
+**quiet, pressed, unhurried** — the register of quiet luxury: an ivory page,
+a hairline rule, one photograph given all the room it needs.
 
 ## Aesthetic lane (named)
 
-**"Ledger & Fascia"** — Victorian trade-printing vernacular executed with the
-Awwwards heritage-winner formula (hue-shifted near-black over warm paper + one
-metal accent). The design borrows only from documented physical objects of the
-trade: the gilded shop fascia with block-shade lettering, the two-color ruled
-order ledger, the manila paper pattern with notches and drill holes, the woven
-bespoke label (customer's name larger than the tailor's), tailor's chalk
-NOTATION (not chalk texture), the engraved brass plate.
+**"Atelier Journal"** — the owner's chosen direction, set by his reference
+images (Flattered, QASIMI, BAINA): light warm-neutral ground, photography-led
+pages where type recedes, one oversized Italiana display moment per page,
+hairline rules as the only ornament, asymmetric narrow text columns, archival
+captions under every photograph, black-and-white film treatment. See DESIGN.md.
 
-Explicitly NOT: the editorial-magazine kit (display serif + tracked uppercase
-eyebrow labels + thin rules), chalkboard textures, kraft paper backgrounds, sepia
-filters, vintage-badge crests, bento grids, custom cursors, preloader counters.
+Explicitly NOT: dark drenched themes, gilded or skeuomorphic artifacts
+(tickets, brass plates, ledger ruling, woven labels, chalk hands), cards,
+shadows, gradients, accent colors, bento grids, custom cursors, preloaders.
+This lane supersedes the earlier "Ledger & Fascia" direction, which the owner
+rejected as too loud.
 
 ## Anti-references
 
-- Every 2024-26 "AI editorial" landing page (Fraunces italic + mono labels)
-- Café-menu chalkboard aesthetics
-- Fashion e-commerce minimalism (Richard James) — too retail, not atelier
+- Every 2024-26 "AI editorial" landing page (Fraunces italic + mono labels,
+  eyebrow-label-plus-display-serif formula)
+- Café-menu chalkboard and Victorian-shopfront aesthetics (tried, rejected)
 - Anything requiring invented facts. All copy comes from CONTENT.md.
 
 ## Strategic principles
 
-1. The Row's grammar, her biography: Savile Row visual codes carry the St.
-   Petersburg training story (the "EST" slot reads "Master tailor · trained in
-   St. Petersburg"). Chalk annotations may use her real hand's language (Russian
-   words like «ателье», «мастер») — Caveat carries Cyrillic.
-2. No weak dimension (Awwwards weights: design 40 / usability 30 / creativity 20 /
-   content 10). Restrained choreography over spectacle; accessibility is the
-   cheapest differentiation (winners average 6.2–6.8 there).
-3. Fit is everything — also true of the site. Every alignment, fraction, and rule
-   line should look measured, because measurement is the product.
+1. The credential carries quietly: "Master tailor · Trained in St. Petersburg"
+   sits in the header utility line and under the About title, in tiny caps.
+2. Photography is the argument. Every photo gets air, a caption, and one
+   consistent grade (B&W on journal pages, muted film in the archive).
+3. Fit is everything — also true of the site. Every alignment and hairline
+   should look measured, because measurement is the product.
+4. No weak dimension (design/usability/creativity/content): restraint over
+   spectacle; accessibility intact (skip link, inert menu, reduced motion).

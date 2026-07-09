@@ -5,59 +5,55 @@ import { Shears } from "@/components/Shears";
 
 export function Footer() {
   return (
-    <footer className="border-t border-gold/25 bg-green-deep text-chalk">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
-            <Shears className="h-7 w-auto text-gold" aria-hidden />
-            <p className="fascia mt-4 text-xl">The Russian Tailor</p>
-            <p className="mt-2 font-serif italic text-chalk-dim">
-              Custom Tailoring &amp; Expert Alterations
-            </p>
-            <p className="mt-6 max-w-sm font-serif text-sm leading-relaxed text-chalk-dim">
-              The shop of master tailor {site.owner}, trained in
-              St.&nbsp;Petersburg, at the corner of View and Government Street in
-              downtown Victoria.
-            </p>
-          </div>
+    <footer className="border-t border-line bg-bone">
+      <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+        <div className="text-center">
+          <Shears className="mx-auto h-4 w-auto text-ink" aria-hidden />
+          <p className="display mt-5 text-[1.15rem] tracking-[0.3em]">
+            The Russian Tailor
+          </p>
+          <p className="caps mt-3 text-ink-faint">
+            Custom tailoring · Expert alterations
+          </p>
+        </div>
 
+        <div className="mt-14 grid gap-10 border-t border-line pt-10 text-center sm:grid-cols-3 sm:text-left">
           <div>
-            <h2 className="tape text-gold">The shop</h2>
-            <address className="mt-4 font-serif text-sm not-italic leading-relaxed text-chalk-dim">
+            <h2 className="caps text-ink-faint">The shop</h2>
+            <address className="mt-4 text-sm not-italic leading-relaxed text-ink-mid">
               {site.address.street}
               <br />
               {site.address.city} {site.address.region} {site.address.postal}
             </address>
-            <p className="mt-3 font-serif text-sm leading-relaxed text-chalk-dim">
+            <p className="mt-2 text-sm leading-relaxed text-ink-mid">
+              At the corner of View and Government Street.
+            </p>
+            <a
+              href={site.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-quiet mt-3 inline-block text-sm"
+            >
+              Get directions
+            </a>
+          </div>
+
+          <div>
+            <h2 className="caps text-ink-faint">Hours &amp; appointments</h2>
+            <p className="mt-4 text-sm leading-relaxed text-ink-mid">
               {site.hoursSummary}
               <br />
               Closed Wednesdays &amp; weekends
             </p>
-            <ul className="mt-4 space-y-1.5 font-serif text-sm">
+            <ul className="mt-3 space-y-1.5 text-sm">
               <li>
-                <a
-                  href={site.phoneHref}
-                  className="text-chalk underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold-bright"
-                >
+                <a href={site.phoneHref} className="link-quiet">
                   {site.phone}
                 </a>
               </li>
               <li>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="text-chalk underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold-bright"
-                >
+                <a href={`mailto:${site.email}`} className="link-quiet">
                   {site.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={site.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-chalk underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold-bright"
-                >
-                  Get directions
                 </a>
               </li>
               <li>
@@ -65,7 +61,7 @@ export function Footer() {
                   href={site.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-chalk underline decoration-gold/50 underline-offset-4 transition-colors hover:text-gold-bright"
+                  className="link-quiet"
                 >
                   Facebook
                 </a>
@@ -74,14 +70,13 @@ export function Footer() {
           </div>
 
           <nav aria-label="Footer">
-            <h2 className="tape text-gold">Pages</h2>
-            <ul className="mt-4 space-y-1.5 font-serif text-sm">
-              {nav.map((item, i) => (
-                <li key={item.href} className="flex items-baseline gap-3">
-                  <span className="folio text-gold-dim">{i + 1}.</span>
+            <h2 className="caps text-ink-faint">Pages</h2>
+            <ul className="mt-4 space-y-1.5 text-sm">
+              {nav.map((item) => (
+                <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-chalk-dim transition-colors hover:text-chalk"
+                    className="text-ink-mid transition-colors hover:text-ink"
                   >
                     {item.label}
                   </Link>
@@ -91,14 +86,11 @@ export function Footer() {
           </nav>
         </div>
 
-        {/* colophon */}
-        <div className="mt-14 border-t border-gold/20 pt-6 sm:flex sm:items-baseline sm:justify-between">
-          <p className="font-serif text-xs text-chalk-dim">
+        <div className="caption mt-14 border-t border-line pt-6 text-center sm:flex sm:items-baseline sm:justify-between sm:text-left">
+          <p>
             © <Year /> The Russian Tailor. All rights reserved.
           </p>
-          <p className="mt-2 font-serif text-xs italic text-chalk-dim/80 sm:mt-0">
-            Set in Besley, after the Clarendon of 1845.
-          </p>
+          <p className="mt-2 sm:mt-0">Set in Italiana and Newsreader.</p>
         </div>
       </div>
     </footer>

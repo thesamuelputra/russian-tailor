@@ -4,10 +4,9 @@ import { useState } from "react";
 import { site } from "@/lib/site";
 
 /**
- * The billhead form: styled after a Victorian trade billhead, inputs sitting on
- * ledger rules. Composes an email in the visitor's own mail app; no message
- * ever touches a server. A post-submit fallback covers machines with no mail
- * client configured.
+ * Quiet editorial form: hairline-underlined fields, tiny caps labels.
+ * Composes an email in the visitor's own mail app; no message ever touches a
+ * server. A post-submit fallback covers machines with no mail client set up.
  */
 export function ContactForm() {
   const [name, setName] = useState("");
@@ -37,21 +36,13 @@ export function ContactForm() {
   };
 
   const field =
-    "w-full border-0 border-b-2 border-ink-soft/50 bg-transparent px-1 py-2 font-serif text-ink placeholder:text-ink-soft/50 focus:border-ledger-red focus:outline-none focus:ring-0";
+    "w-full border-0 border-b border-line-strong bg-transparent px-0 py-2.5 text-[0.9375rem] text-ink placeholder:text-ink-faint/60 focus:border-ink transition-colors";
 
   return (
-    <form onSubmit={handleSubmit} className="on-paper">
-      {/* billhead header */}
-      <div className="flex flex-wrap items-baseline justify-between gap-3 border-b-2 border-ink/60 pb-3">
-        <p className="tape text-ink">To: The Russian Tailor · I. Sitonin</p>
-        <p className="font-serif text-sm italic text-ink-soft">
-          Victoria, B.C., ______ 20__
-        </p>
-      </div>
-
-      <div className="mt-8 space-y-7">
+    <form onSubmit={handleSubmit}>
+      <div className="space-y-8">
         <div>
-          <label htmlFor="contact-name" className="tape block text-ink-soft">
+          <label htmlFor="contact-name" className="caps block text-ink-faint">
             Name
           </label>
           <input
@@ -66,7 +57,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="contact-email" className="tape block text-ink-soft">
+          <label htmlFor="contact-email" className="caps block text-ink-faint">
             Email address
           </label>
           <input
@@ -81,7 +72,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="contact-message" className="tape block text-ink-soft">
+          <label htmlFor="contact-message" className="caps block text-ink-faint">
             Message
           </label>
           <textarea
@@ -91,57 +82,42 @@ export function ContactForm() {
             rows={5}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className={`${field} resize-y leading-[2.4rem]`}
+            className={`${field} resize-y leading-relaxed`}
           />
         </div>
       </div>
 
-      <button
-        type="submit"
-        className="tape mt-9 bg-ledger-red px-7 py-3.5 text-sm text-paper transition-colors hover:bg-ink active:scale-[0.97]"
-      >
+      <button type="submit" className="caps btn-line mt-10 cursor-pointer">
         Send message
       </button>
 
       {attempted ? (
-        <div
-          className="mt-5 border border-ink/20 bg-paper-deep px-4 py-3"
-          role="status"
-        >
-          <p className="font-serif text-sm text-ink">
+        <div className="mt-6 border border-line bg-bone-deep px-4 py-3" role="status">
+          <p className="text-sm leading-relaxed text-ink-mid">
             Your email app should have opened with the message ready. If it
             didn&rsquo;t, write to{" "}
-            <a
-              href={`mailto:${site.email}`}
-              className="font-medium underline decoration-ledger-red/40 underline-offset-4"
-            >
+            <a href={`mailto:${site.email}`} className="link-quiet">
               {site.email}
             </a>{" "}
             <button
               type="button"
               onClick={copyAddress}
-              className="tape ml-1 border border-ink/30 px-2 py-1 text-[0.7rem] text-ink-soft hover:border-ink hover:text-ink"
+              className="caps ml-1 cursor-pointer border border-line-strong px-2 py-1 text-[0.6rem] text-ink-faint transition-colors hover:border-ink hover:text-ink"
             >
               {copied ? "Copied" : "Copy address"}
             </button>{" "}
             or call{" "}
-            <a
-              href={site.phoneHref}
-              className="font-medium underline decoration-ledger-red/40 underline-offset-4"
-            >
+            <a href={site.phoneHref} className="link-quiet">
               {site.phone}
             </a>
             .
           </p>
         </div>
       ) : (
-        <p className="mt-5 font-serif text-sm italic text-ink-soft">
+        <p className="caption mt-6">
           This opens your email app with the message ready to send to{" "}
           {site.email}. Prefer the phone? Call{" "}
-          <a
-            href={site.phoneHref}
-            className="font-medium not-italic text-ink underline decoration-ledger-red/40 underline-offset-4"
-          >
+          <a href={site.phoneHref} className="link-quiet">
             {site.phone}
           </a>
           .

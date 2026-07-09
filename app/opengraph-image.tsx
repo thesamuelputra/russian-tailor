@@ -8,10 +8,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpengraphImage() {
-  const [extrabold, italic] = await Promise.all([
-    readFile(join(process.cwd(), "assets/fonts/besley-extrabold.ttf")),
-    readFile(join(process.cwd(), "assets/fonts/besley-medium-italic.ttf")),
-  ]);
+  const italiana = await readFile(
+    join(process.cwd(), "assets/fonts/italiana-regular.ttf")
+  );
 
   return new ImageResponse(
     (
@@ -23,34 +22,30 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#16241c",
-          color: "#a49160",
-          fontFamily: "Besley",
-          border: "3px solid #a49160",
-          // inner keyline, fascia-style
-          boxShadow: "inset 0 0 0 14px #16241c, inset 0 0 0 15px rgba(164,145,96,0.45)",
+          backgroundColor: "#f7f4ec",
+          color: "#26221b",
+          fontFamily: "Italiana",
+          border: "1px solid rgba(38,34,27,0.35)",
+          boxShadow: "inset 0 0 0 18px #f7f4ec, inset 0 0 0 19px rgba(38,34,27,0.25)",
         }}
       >
         <div
           style={{
-            fontSize: 24,
-            letterSpacing: 10,
+            fontSize: 20,
+            letterSpacing: 12,
             textTransform: "uppercase",
-            color: "#cfc6b0",
-            fontStyle: "italic",
+            color: "#5d564a",
           }}
         >
           Master tailor · Trained in St. Petersburg
         </div>
         <div
           style={{
-            fontSize: 96,
-            fontWeight: 800,
-            marginTop: 30,
-            lineHeight: 1.02,
+            fontSize: 104,
+            marginTop: 36,
+            lineHeight: 1,
             textTransform: "uppercase",
-            letterSpacing: 4,
-            textShadow: "5px 5px 0 #0e1712",
+            letterSpacing: 14,
             textAlign: "center",
           }}
         >
@@ -58,31 +53,32 @@ export default async function OpengraphImage() {
         </div>
         <div
           style={{
-            marginTop: 34,
+            marginTop: 42,
             display: "flex",
             alignItems: "center",
-            gap: 22,
+            gap: 26,
           }}
         >
-          <div style={{ width: 70, height: 1, backgroundColor: "#a49160" }} />
+          <div style={{ width: 80, height: 1, backgroundColor: "rgba(38,34,27,0.4)" }} />
           <div
             style={{
-              fontSize: 30,
-              fontStyle: "italic",
-              color: "#e7e2d2",
+              fontSize: 22,
+              letterSpacing: 8,
+              textTransform: "uppercase",
+              color: "#5d564a",
             }}
           >
             Custom Tailoring &amp; Expert Alterations
           </div>
-          <div style={{ width: 70, height: 1, backgroundColor: "#a49160" }} />
+          <div style={{ width: 80, height: 1, backgroundColor: "rgba(38,34,27,0.4)" }} />
         </div>
         <div
           style={{
-            marginTop: 40,
-            fontSize: 20,
-            letterSpacing: 8,
+            marginTop: 44,
+            fontSize: 17,
+            letterSpacing: 9,
             textTransform: "uppercase",
-            color: "#cfc6b0",
+            color: "#5d564a",
           }}
         >
           No. 203 · 612 View Street · Victoria BC
@@ -91,10 +87,7 @@ export default async function OpengraphImage() {
     ),
     {
       ...size,
-      fonts: [
-        { name: "Besley", data: extrabold, weight: 800, style: "normal" },
-        { name: "Besley", data: italic, weight: 500, style: "italic" },
-      ],
+      fonts: [{ name: "Italiana", data: italiana, weight: 400, style: "normal" }],
     }
   );
 }

@@ -1,75 +1,75 @@
 # DESIGN.md — The Russian Tailor
 
-## Color (strategy: Drenched dark alternating with warm paper; named reference:
-## "Invisible Green shopfront, Henry Poole old gold, English ledger paper")
+## Lane: "Atelier Journal"
 
-Every color is a documented material, not a mood:
+Quiet, light, editorial minimalism, set by the owner's reference images
+(Flattered, QASIMI, BAINA): warm ivory ground, photography first, hairline
+rules as the only ornament, one oversized display moment per page, everything
+else small and letterspaced. Whitespace is the luxury. Never dark themes,
+never skeuomorphic artifacts, never decorative color.
 
-| token | value | material source |
+## Color (strategy: Restrained monochrome; warm neutrals only)
+
+| token | value | role |
 |---|---|---|
-| `--color-green` | `oklch(23% 0.028 165)` ≈ #16241c | "Invisible Green" Victorian shopfront paint (reads almost black) |
-| `--color-green-deep` | `oklch(19% 0.024 165)` | fascia block-shade tone |
-| `--color-paper` | `oklch(93.5% 0.022 90)` ≈ #f0e9d8 | English ledger paper (cream) |
-| `--color-paper-deep` | `oklch(90% 0.026 92)` | ledger paper, aged edge |
-| `--color-ink` | `oklch(24% 0.015 75)` ≈ #2b2620 | full-density letterpress ink |
-| `--color-gold` | `oklch(68% 0.075 88)` ≈ #a49160 | Henry Poole old gold / oil gilding |
-| `--color-gold-bright` | `oklch(78% 0.09 92)` | gilding highlight |
-| `--color-ledger-red` | `oklch(45% 0.13 30)` ≈ #a6392e | ledger cash-column doubled verticals |
-| `--color-feint` | `oklch(72% 0.035 240)` ≈ #9db8cc | feint-blue ledger rules |
-| `--color-chalk` | `oklch(92% 0.012 95)` | tailor's chalk on dark cloth |
-| `--color-manila` | `oklch(78% 0.07 80)` ≈ #d4a96a | paper-pattern card |
+| `--color-bone` | `oklch(96.8% 0.008 90)` ≈ #f7f4ec | page ground, warm ivory |
+| `--color-bone-deep` | `oklch(94.2% 0.01 88)` | quiet fills (status boxes) |
+| `--color-ink` | `oklch(23% 0.01 80)` ≈ #26221b | warm near-black text |
+| `--color-ink-mid` | `oklch(38% 0.01 80)` | body copy |
+| `--color-ink-faint` | `oklch(46% 0.01 80)` | captions, tiny caps (AA at 11px) |
+| `--color-line` | ink @ 16% | hairline rules |
+| `--color-line-strong` | ink @ 42% | field underlines, buttons |
 
-Dark sections are drenched Invisible Green with chalk/gold type. Light sections
-are ledger paper with ink type and real two-color ruling. Never #000/#fff.
+No accent color. Emphasis comes from scale, weight, and air. Never #000/#fff.
 
 ## Typography
 
-- **Besley** (variable 400–900 + italics) — the voice. Robert Besley designed the
-  original Clarendon (1845), the definitive English trade letter. Display at
-  800–900 (Victorian poster), body at 400. Fascia headings get the signwriter's
-  block shade: offset text-shadow, zero blur, in a darker tone of the ground.
-- **Archivo** (variable, wdth 62–125) — the tape-measure voice. Condensed
-  uppercase (wdth ~68, wght 500–600, tracking 0.08–0.12em) for nav, folio marks,
-  spec labels; normal width for captions and UI.
-- **Caveat** (variable, Cyrillic) — the tailor's chalk hand. Annotations at 65–80%
-  opacity, rotated −1.5° to −2.5°, occasionally in Russian («ателье», «мастер»).
-  Chalk is notation, never texture.
+- **Italiana** (400 only) — the single loud voice. High-contrast condensed serif
+  caps for the one display moment per page (page title, wordmark, fabric-house
+  names). Tracking 0.04em at display size, up to 0.32em for the wordmark.
+- **Newsreader** (variable + italics, opsz) — everything else. Body at
+  0.9375rem/1.8 in narrow journal columns; section heads sentence-case with a
+  terminal period; pull quotes italic; tiny tracked caps (11px / 0.24em) for
+  nav, labels, and buttons; archival captions ("Above: …") at 11px.
 
-Headline system (from Gieves & Hawkes): tracked caps with ONE word in italic
-lowercase and a terminal full stop — "FITTED IN *Victoria*." No eyebrow labels;
-sections are indexed with ledger folio marks ("No. 2 / 6") instead.
+Voices (globals.css, @layer components): `.display`, `.caps`, `.caption`,
+`.head`, `.quote`, `.prose-journal`, `.link-quiet`, `.btn-line`.
 
-## Recurring components
+## Photography
 
-- **Ledger sheet**: paper ground, feint-blue horizontal rules (8mm rhythm),
-  doubled ledger-red vertical for the margin column. Services and hours live here.
-- **Woven label**: satin-black ground, selvedge striping at left/right edges, gold
-  stitched-look lettering; the client's words set LARGER than the house name.
-- **Brass plate**: engraved roman caps, gold face with near-black infill, hairline
-  rule between name and trade line. The address block.
-- **Order ticket**: small paper card, punched hole, slight rotation, manila tone.
-  Seasonal notices.
-- **Chalk notation icons**: let-out hashtag, take-in parallels, balance-line cross
-  (mobile close button), drill-hole rings as list bullets, pattern notches as
-  prev/next. 1px, technical, never illustrative.
-
-## Imagery
-
-Two registers (both already in /public/images): tungsten-warm shop photography
-(Irina at work — keep warm, slight dim) and garment photography unified with
-`saturate(.85)` at rest, full color on hover. Scroll reveals use clip-path masks,
-not bare opacity. No sepia, no noise overlays.
-
-## Motion
-
-- One choreographed hero entrance (mask reveal, <1s, stagger via CSS only)
-- Scroll reveals: clip-path/translate with exponential ease-out, IO-driven
-- Subtle image parallax where `animation-timeline: view()` is supported
-- No scroll-jacking, no marquees, no custom cursor, no preloaders
-- `prefers-reduced-motion` disables everything; content never hidden without JS
+- Journal pages run **black and white**: `.photo` = grayscale(1), one grade
+  across every image. This is also the great equalizer for mixed-quality
+  source photos.
+- The archive (/photos) keeps **muted film colour**: `.photo-film` =
+  saturate(.72).
+- Every placement carries a tiny archival caption below, BAINA-style. Two
+  tiers: lead/standalone figures take the full "Above: …" form; figures in
+  pairs and grids take a short note ("Dark suiting.").
+- No mats, no frames, no rotation, no hover color reveals.
 
 ## Layout
 
-Paper sections use the visible ledger grid as structure (strict grid as voice).
-Dark sections are asymmetric with oversized Besley numerals and generous air.
-Body copy capped at 65–75ch. Fluid type via clamp; scale ratio ≥1.28.
+- Container max-w-6xl; grids on 12 columns with asymmetric placements
+  (col-span-5 text against col-span-7 image, offsets via col-start and top
+  padding). Staggered figure pairs (one dropped by mt-12/14).
+- Hairline rules structure the page: under the display title, `border-y`
+  around the services register, `border-t` opening each late section.
+- The services grid is QASIMI-style ruled cells (divide-x), not cards:
+  no fills, no shadows, no radius anywhere.
+- Body columns cap near 65ch (`max-w-md` at 15px).
+
+## Motion
+
+- One CSS-only page-load stagger (`.rise`, 14px fade-up, expo ease).
+- Scroll reveals are opacity + 12px translate only (`.reveal`), JS-gated via
+  `html.js`, IntersectionObserver in components/Reveal.tsx.
+- One functional exception: the mobile menu toggle's two bars cross into an X
+  (45° transform, disabled under reduced motion). Nothing else moves.
+  `prefers-reduced-motion` disables all of it.
+
+## Never
+
+Dark grounds, gradients, cards, shadows, border radius, decorative blur,
+rotated content (the menu toggle's X is the one functional exception),
+skeuomorphs (tickets/plates/labels), display-serif-plus-eyebrow formula,
+em dashes in copy, invented facts.

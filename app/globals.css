@@ -1,568 +1,200 @@
 @import "tailwindcss";
 
 /*
-  THE RUSSIAN TAILOR — "Ledger & Fascia"
-  Every color is a documented material (see DESIGN.md):
-  Invisible Green shopfront paint, English ledger paper, letterpress ink,
-  old gold gilding, ledger-red cash rules, feint-blue ruling, tailor's chalk,
-  manila pattern card.
+  THE RUSSIAN TAILOR — "Atelier Journal"
+  A quiet editorial system: warm ivory ground, hairline rules, photography
+  first. One oversized Italiana display moment per page; Newsreader carries
+  everything else at small sizes with wide air. See DESIGN.md.
 */
 
 @theme {
-  --color-green: oklch(23% 0.028 165);
-  --color-green-deep: oklch(18.5% 0.024 165);
-  --color-green-soft: oklch(29% 0.03 163);
-  --color-paper: oklch(93.5% 0.022 90);
-  --color-paper-deep: oklch(90% 0.026 92);
-  --color-ink: oklch(24% 0.015 75);
-  --color-ink-soft: oklch(39% 0.018 75);
-  --color-gold: oklch(68% 0.075 88);
-  --color-gold-bright: oklch(79% 0.09 92);
-  --color-gold-dim: oklch(52% 0.06 88);
-  --color-ledger-red: oklch(45% 0.13 30);
-  --color-feint: oklch(74% 0.035 240);
-  --color-chalk: oklch(92.5% 0.012 95);
-  --color-chalk-dim: oklch(80% 0.018 100);
-  --color-manila: oklch(80% 0.062 82);
-  --color-manila-deep: oklch(72% 0.07 78);
-  --color-satin: oklch(17% 0.012 80);
+  --color-bone: oklch(96.8% 0.008 90);
+  --color-bone-deep: oklch(94.2% 0.01 88);
+  --color-ink: oklch(23% 0.01 80);
+  --color-ink-mid: oklch(38% 0.01 80);
+  --color-ink-faint: oklch(46% 0.01 80);
+  --color-line: oklch(23% 0.01 80 / 0.16);
+  /* 0.5 alpha keeps form-field boundaries at >=3:1 on bone (WCAG 1.4.11) */
+  --color-line-strong: oklch(23% 0.01 80 / 0.5);
 
-  --font-serif: var(--font-besley);
-  --font-sans: var(--font-archivo);
-  --font-chalk: var(--font-caveat);
+  --font-display: var(--font-italiana);
+  --font-serif: var(--font-newsreader);
 
-  --text-fascia: clamp(2.7rem, 0.8rem + 8.2vw, 7.2rem);
-  --text-display: clamp(2.1rem, 1rem + 3.8vw, 4rem);
-  --text-head: clamp(1.5rem, 1.05rem + 1.9vw, 2.5rem);
-  --text-sec: clamp(1.3rem, 1rem + 1.3vw, 1.9rem);
+  /* each page's one big display moment is clamped per word length in place */
+  --text-head: clamp(1.5rem, 1.15rem + 1.5vw, 2.25rem);
+  --text-quote: clamp(1.3rem, 1rem + 1.5vw, 2.1rem);
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-::selection {
-  background: var(--color-gold);
-  color: var(--color-green-deep);
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--color-green);
-  color: var(--color-chalk);
-  font-family: var(--font-serif);
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-:focus-visible {
-  outline: 2px solid var(--color-gold-bright);
-  outline-offset: 3px;
-  border-radius: 1px;
-}
-
-.on-paper :focus-visible,
-.ledger :focus-visible {
-  outline-color: var(--color-ledger-red);
-}
-
-/* ---------- Type voices ---------- */
-
-/* Gilded fascia lettering with the signwriter's block shade */
-.fascia {
-  font-family: var(--font-serif);
-  font-weight: 870;
-  text-transform: uppercase;
-  letter-spacing: 0.035em;
-  line-height: 0.98;
-  color: var(--color-gold);
-  text-shadow: 0.045em 0.045em 0 var(--color-green-deep);
-}
-
-.fascia-bright {
-  color: var(--color-gold-bright);
-}
-
-/* The Row headline: tracked caps, one word in italic lowercase, terminal stop.
-   Usage: <h2 class="rowline">FITTED IN <em>Victoria.</em></h2> */
-.rowline {
-  font-family: var(--font-serif);
-  font-weight: 480;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  line-height: 1.18;
-}
-
-.rowline em {
-  text-transform: none;
-  font-style: italic;
-  font-weight: 420;
-  letter-spacing: 0.01em;
-  font-size: 1.06em;
-}
-
-/* Quieter section-level variant: less tracking, less size, same voice */
-.rowline-sm {
-  font-family: var(--font-serif);
-  font-weight: 520;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-}
-
-.rowline-sm em {
-  text-transform: none;
-  font-style: italic;
-  font-weight: 430;
-  letter-spacing: 0.01em;
-  font-size: 1.06em;
-}
-
-/* Tape-measure labels: condensed Archivo caps (wdth via font-stretch) */
-.tape {
-  font-family: var(--font-sans);
-  font-stretch: 68%;
-  font-weight: 560;
-  text-transform: uppercase;
-  letter-spacing: 0.11em;
-  font-size: 0.8125rem;
-}
-
-/* Ledger folio index: "No. 2 / 6" */
-.folio {
-  font-family: var(--font-sans);
-  font-stretch: 72%;
-  font-weight: 520;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  color: var(--color-gold);
-}
-
-.on-paper .folio {
-  color: var(--color-ledger-red);
-}
-
-/* The tailor's chalk hand (Caveat, carries Cyrillic) */
-.chalk-note {
-  font-family: var(--font-chalk);
-  font-weight: 500;
-  font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem);
-  line-height: 1.25;
-  color: color-mix(in oklch, var(--color-chalk) 78%, transparent);
-  rotate: -2deg;
-  display: inline-block;
-}
-
-.on-paper .chalk-note {
-  color: color-mix(in oklch, var(--color-ink-soft) 85%, transparent);
-}
-
-/* ---------- Ledger sheet ---------- */
-
-.ledger {
-  --rule: 2.4rem;
-  background-color: var(--color-paper);
-  color: var(--color-ink);
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent calc(var(--rule) - 1px),
-    color-mix(in oklch, var(--color-feint) 38%, transparent) calc(var(--rule) - 1px),
-    color-mix(in oklch, var(--color-feint) 38%, transparent) var(--rule)
-  );
-  /* nudge the ruling so 1rem/2.4rem text sits its baseline ON the rules */
-  background-position: 0 1.45rem;
-}
-
-/* Body copy inside the ledger sits its lines on the ruling */
-.ledger p {
-  line-height: var(--rule);
-}
-
-/* Doubled red vertical: the cash-column rule */
-.ledger-margin {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  border-left: 3px double color-mix(in oklch, var(--color-ledger-red) 62%, transparent);
-}
-
-/* Entries sit their baselines on the ruling */
-.ledger-line {
-  line-height: var(--rule);
-}
-
-/* ---------- Woven bespoke label ---------- */
-
-.woven {
-  background: var(--color-satin);
-  color: var(--color-gold-bright);
-  position: relative;
-  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.75rem, 6vw, 4.5rem);
-}
-
-.woven::before,
-.woven::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 7px;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    color-mix(in oklch, var(--color-gold) 65%, transparent) 0 2px,
-    transparent 2px 5px
-  );
-}
-
-.woven::before {
-  left: 7px;
-}
-
-.woven::after {
-  right: 7px;
-}
-
-/* horizontal stitch runs, closing the label's selvedge */
-.woven-stitch-x {
-  position: absolute;
-  left: 7px;
-  right: 7px;
-  height: 7px;
-  background-image: repeating-linear-gradient(
-    to right,
-    color-mix(in oklch, var(--color-gold) 65%, transparent) 0 2px,
-    transparent 2px 5px
-  );
-}
-
-.woven-text {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 480;
-  letter-spacing: 0.015em;
-  /* thread aliasing */
-  text-shadow: 0 0 0.6px color-mix(in oklch, var(--color-gold-bright) 60%, transparent);
-}
-
-/* ---------- Brass plate ---------- */
-
-.plate {
-  display: inline-block;
-  background-image:
-    repeating-linear-gradient(
-      112deg,
-      transparent 0 2px,
-      oklch(32% 0.05 85 / 0.05) 2px 3px
-    ),
-    linear-gradient(
-      112deg,
-      oklch(52% 0.09 88),
-      oklch(69% 0.105 90) 30%,
-      oklch(78% 0.115 94) 50%,
-      oklch(69% 0.105 90) 70%,
-      oklch(52% 0.09 88)
-    );
-  color: oklch(16% 0.01 80);
-  border: 1px solid oklch(40% 0.07 85);
-  box-shadow:
-    0 1px 0 oklch(88% 0.08 95 / 0.5) inset,
-    0 -1px 0 oklch(30% 0.05 85 / 0.6) inset,
-    0 2px 8px oklch(10% 0.02 165 / 0.5);
-  text-align: center;
-  font-family: var(--font-serif);
-  text-transform: uppercase;
-}
-
-.plate-rule {
-  height: 1px;
-  background: oklch(16% 0.01 80 / 0.55);
-  margin: 0.5rem auto;
-  width: 3.5rem;
-}
-
-/* ---------- Order ticket (manila, punched) ---------- */
-
-.ticket {
-  --tilt: 0deg;
-  position: relative;
-  background: linear-gradient(168deg, var(--color-manila), var(--color-manila-deep));
-  color: var(--color-ink);
-  padding: 2.75rem 1.9rem 1.9rem;
-  box-shadow:
-    0 2px 3px oklch(10% 0.02 165 / 0.4),
-    0 12px 28px oklch(10% 0.02 165 / 0.28);
-  /* pinned at the punch hole */
-  transform-origin: 50% 1.2rem;
-  rotate: var(--tilt);
-  transition: rotate 0.6s var(--ease-out-quint);
-}
-
-/* pinned paper physics: swing in on reveal, dangle on hover */
-@keyframes pin-swing {
-  0% {
-    rotate: calc(var(--tilt) - 4.5deg);
+@layer base {
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-bone);
   }
-  58% {
-    rotate: calc(var(--tilt) + 1.3deg);
+
+  html {
+    scroll-behavior: smooth;
   }
-  85% {
-    rotate: calc(var(--tilt) - 0.4deg);
+
+  body {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-serif);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  100% {
-    rotate: var(--tilt);
+
+  :focus-visible {
+    outline: 1.5px solid var(--color-ink);
+    outline-offset: 3px;
   }
 }
 
-html.js .reveal.is-shown .ticket {
-  animation: pin-swing 1.3s var(--ease-out-quint) both;
-}
+@layer components {
+  /* ---------- Type voices ---------- */
 
-@media (hover: hover) {
-  .ticket:hover {
-    rotate: calc(var(--tilt) + 1.4deg);
+  /* The single loud element on a page: Italiana caps, near-solid leading */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 0.96;
+    color: var(--color-ink);
   }
-}
 
-.ticket::before {
-  /* punched hole showing the ground through the card */
-  content: "";
-  position: absolute;
-  top: 0.95rem;
-  left: 50%;
-  translate: -50% 0;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: var(--color-green);
-  box-shadow:
-    inset 0 1px 2px oklch(8% 0.02 165 / 0.8),
-    0 1px 0 oklch(95% 0.03 90 / 0.35);
-}
-
-.ticket-tilt-l {
-  --tilt: -1.3deg;
-}
-
-.ticket-tilt-r {
-  --tilt: 2.2deg;
-}
-
-/* ---------- Chalk-notation iconography ---------- */
-
-/* drill-hole rings as list bullets */
-.notation > li {
-  position: relative;
-  padding-left: 1.4rem;
-}
-
-.notation > li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.5em;
-  width: 8px;
-  height: 8px;
-  border: 1.5px solid currentColor;
-  border-radius: 50%;
-  opacity: 0.75;
-}
-
-/* a single confident chalk stroke */
-.chalk-stroke {
-  height: 2px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    color-mix(in oklch, var(--color-chalk) 65%, transparent) 6%,
-    color-mix(in oklch, var(--color-chalk) 65%, transparent) 94%,
-    transparent
-  );
-}
-
-.on-paper .chalk-stroke {
-  background: linear-gradient(
-    to right,
-    transparent,
-    color-mix(in oklch, var(--color-ink-soft) 55%, transparent) 6%,
-    color-mix(in oklch, var(--color-ink-soft) 55%, transparent) 94%,
-    transparent
-  );
-}
-
-/* ---------- Imagery ---------- */
-
-/* one unifying grade across all photography; full colour returns on hover */
-.garment {
-  filter: sepia(0.14) saturate(0.8) contrast(1.04);
-  transition: filter 0.55s var(--ease-out-quint);
-}
-
-.garment:hover,
-a:hover .garment,
-a:focus-visible .garment,
-.reveal-frame:hover .garment {
-  filter: sepia(0) saturate(1) contrast(1);
-}
-
-/* archival print: cream mat, hairline, faint green varnish */
-.print {
-  position: relative;
-  background: var(--color-chalk);
-  padding: 8px;
-  box-shadow:
-    0 1px 2px oklch(10% 0.02 165 / 0.5),
-    0 14px 30px oklch(10% 0.02 165 / 0.3);
-}
-
-.print::after {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  background: var(--color-green-deep);
-  opacity: 0.12;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
-/* hover-reveal caption plate over gallery images */
-.reveal-caption {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  translate: 0 102%;
-  transition: translate 0.5s var(--ease-out-expo);
-  background: color-mix(in oklch, var(--color-green-deep) 88%, transparent);
-  color: var(--color-chalk);
-  padding: 0.6rem 0.9rem;
-}
-
-@media (hover: hover) {
-  .reveal-frame:hover .reveal-caption,
-  .reveal-frame:focus-within .reveal-caption {
-    translate: 0 0;
+  /* Tiny tracked caps: nav, labels, buttons, running heads */
+  .caps {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.6875rem;
+    line-height: 1.4;
   }
-}
 
-@media (hover: none) {
-  .reveal-caption {
-    translate: 0 0;
-    background: color-mix(in oklch, var(--color-green-deep) 72%, transparent);
+  /* Archival caption under photographs: "Above: …" */
+  .caption {
+    font-family: var(--font-serif);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    line-height: 1.55;
+    color: var(--color-ink-faint);
   }
-}
 
-/* ---------- Motion ---------- */
-
-/* Sign-painting entrance: each fascia line wipes on while its block shade sets */
-@keyframes fascia-wipe {
-  from {
-    clip-path: inset(-0.1em 105% -0.15em 0);
-    text-shadow: 0 0 0 var(--color-green-deep);
+  /* Section head: sentence-case serif with a terminal period */
+  .head {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.005em;
   }
-  to {
-    clip-path: inset(-0.1em -8% -0.15em 0);
-    text-shadow: 0.045em 0.045em 0 var(--color-green-deep);
+
+  /* Pull quote: serif italic, unhurried */
+  .quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 380;
+    line-height: 1.45;
+    letter-spacing: 0.005em;
   }
-}
 
-.fascia-line {
-  display: inline-block;
-  animation: fascia-wipe 0.85s var(--ease-out-expo) both;
-  animation-delay: calc(var(--stagger, 0) * 160ms);
-  text-shadow: 0.045em 0.045em 0 var(--color-green-deep);
-}
-
-/* the chalk hand writes itself */
-@keyframes chalk-write {
-  from {
-    clip-path: inset(-20% 102% -20% 0);
+  /* Body copy column: journal measure, small and airy */
+  .prose-journal {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--color-ink-mid);
   }
-  to {
-    clip-path: inset(-20% -6% -20% 0);
+
+  .prose-journal p + p {
+    margin-top: 1.4em;
   }
-}
 
-.chalk-write {
-  animation: chalk-write 0.9s var(--ease-out-quint) both;
-  animation-delay: calc(var(--stagger, 0) * 160ms + 250ms);
-}
+  .prose-journal strong {
+    font-weight: 500;
+    color: var(--color-ink);
+  }
 
-/* Hero entrance, CSS-only, staggered via --stagger */
-@keyframes rise-in {
-  from {
+  /* ---------- Links & buttons ---------- */
+
+  .link-quiet {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--color-line-strong);
+    text-underline-offset: 0.3em;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 0.3s var(--ease-out-quint);
+  }
+
+  .link-quiet:hover {
+    text-decoration-color: var(--color-ink);
+  }
+
+  .btn-line {
+    display: inline-block;
+    border: 1px solid var(--color-line-strong);
+    padding: 0.9rem 1.9rem;
+    color: var(--color-ink);
+    transition:
+      background-color 0.35s var(--ease-out-quint),
+      color 0.35s var(--ease-out-quint),
+      border-color 0.35s var(--ease-out-quint);
+  }
+
+  .btn-line:hover {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-bone);
+  }
+
+  /* ---------- Photography ---------- */
+
+  /* Journal pages run black and white; one grade across every photograph */
+  .photo {
+    filter: grayscale(1) contrast(1.05) brightness(1.01);
+    display: block;
+  }
+
+  /* The archive keeps muted film colour */
+  .photo-film {
+    filter: saturate(0.72) contrast(1.02);
+    display: block;
+  }
+
+  /* ---------- Motion ---------- */
+
+  /* Page-load entrance, CSS only, staggered via --stagger */
+  .rise {
+    animation: rise-in 1.1s var(--ease-out-expo) both;
+    animation-delay: calc(var(--stagger, 0) * 110ms);
+  }
+
+  /* Scroll reveals: hidden state applies only once JS is confirmed (html.js) */
+  html.js .reveal {
     opacity: 0;
-    translate: 0 26px;
+    translate: 0 12px;
+    transition:
+      opacity 1s var(--ease-out-quint),
+      translate 1s var(--ease-out-quint);
   }
-  to {
+
+  html.js .reveal.is-shown {
     opacity: 1;
     translate: 0 0;
   }
 }
 
-.rise {
-  animation: rise-in 1s var(--ease-out-quint) both;
-  animation-delay: calc(var(--stagger, 0) * 120ms);
-}
-
-@keyframes settle {
+@keyframes rise-in {
   from {
-    scale: 1.055;
+    opacity: 0;
+    translate: 0 14px;
   }
   to {
-    scale: 1;
-  }
-}
-
-.settle {
-  animation: settle 1.6s var(--ease-out-expo) both;
-}
-
-/* Scroll reveals: hidden state applies only once JS is confirmed (html.js) */
-html.js .reveal {
-  opacity: 0;
-  translate: 0 24px;
-  transition:
-    opacity 0.85s var(--ease-out-quint),
-    translate 0.85s var(--ease-out-quint);
-}
-
-html.js .reveal.is-shown {
-  opacity: 1;
-  translate: 0 0;
-}
-
-/* mask reveal for images: works standalone or nested inside a .reveal parent */
-html.js .reveal-mask {
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1s var(--ease-out-expo);
-}
-
-html.js .reveal-mask.is-shown,
-html.js .reveal.is-shown .reveal-mask {
-  clip-path: inset(0 0 0% 0);
-}
-
-/* Subtle parallax drift where scroll-driven animations exist */
-@supports (animation-timeline: view()) {
-  @keyframes drift {
-    from {
-      translate: 0 4.5%;
-    }
-    to {
-      translate: 0 -4.5%;
-    }
-  }
-
-  .parallax-img {
-    animation: drift linear both;
-    animation-timeline: view();
-    animation-range: entry 0% exit 100%;
-    scale: 1.1;
+    opacity: 1;
+    translate: 0 0;
   }
 }
 
@@ -571,28 +203,10 @@ html.js .reveal.is-shown .reveal-mask {
     scroll-behavior: auto;
   }
   .rise,
-  .settle,
-  .parallax-img,
-  .fascia-line,
-  .chalk-write,
-  html.js .reveal,
-  html.js .reveal-mask,
-  html.js .reveal.is-shown .ticket {
+  html.js .reveal {
     animation: none;
     transition: none;
     opacity: 1;
-    translate: 0 0;
-    scale: 1;
-    clip-path: none;
-  }
-  .fascia-line {
-    text-shadow: 0.045em 0.045em 0 var(--color-green-deep);
-  }
-  .ticket,
-  .ticket:hover {
-    rotate: var(--tilt);
-  }
-  .reveal-caption {
     translate: 0 0;
   }
 }

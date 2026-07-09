@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 
 type PageMetaOpts = {
-  /** Page title, run through the layout's "%s — The Russian Tailor" template. */
+  /** Page title, run through the layout's "%s · The Russian Tailor" template. */
   title?: string;
   /** Full title used verbatim (for the home page). */
   absoluteTitle?: string;
@@ -17,7 +17,7 @@ type PageMetaOpts = {
  * must carry the full openGraph set itself.
  */
 export function pageMeta({ title, absoluteTitle, description, path }: PageMetaOpts): Metadata {
-  const ogTitle = absoluteTitle ?? (title ? `${title} — ${site.name}` : site.name);
+  const ogTitle = absoluteTitle ?? (title ? `${title} · ${site.name}` : site.name);
   return {
     ...(absoluteTitle ? { title: { absolute: absoluteTitle } } : title ? { title } : {}),
     description,

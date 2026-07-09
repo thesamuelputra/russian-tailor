@@ -1,10 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#16241c"/>
-  <rect x="3.5" y="3.5" width="57" height="57" fill="none" stroke="#a49160" stroke-opacity="0.55" stroke-width="1.5"/>
-  <text x="32" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" text-anchor="middle" fill="#a49160">RT</text>
-  <g stroke="#a49160" stroke-width="2" stroke-linecap="round" opacity="0.85">
-    <line x1="16" y1="52" x2="26" y2="52"/>
-    <line x1="30" y1="52" x2="34" y2="52"/>
-    <line x1="38" y1="52" x2="48" y2="52"/>
+  <rect width="64" height="64" fill="#f7f4ec"/>
+  <rect x="3.5" y="3.5" width="57" height="57" fill="none" stroke="#26221b" stroke-opacity="0.35" stroke-width="1"/>
+  <g fill="none" stroke="#26221b" stroke-width="2" stroke-linecap="round" transform="translate(9,21)">
+    <circle cx="5.2" cy="6" r="3.3"/>
+    <circle cx="5.2" cy="15" r="3.3"/>
+    <path d="M8.2 7.1 43 16.5"/>
+    <path d="M8.2 13.9 43 4.5"/>
+    <path d="M41.5 3.4 45.2 5.1 43.3 8.9"/>
+    <path d="M41.5 17.6 45.2 15.9 43.3 12.1"/>
   </g>
 </svg>
