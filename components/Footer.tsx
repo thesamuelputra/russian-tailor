@@ -9,10 +9,10 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="text-center">
           <Shears className="mx-auto h-4 w-auto text-ink" aria-hidden />
-          <p className="display mt-5 text-[1.15rem] tracking-[0.3em]">
+          <p className="display mt-5 pl-[0.3em] text-[1.15rem] tracking-[0.3em]">
             The Russian Tailor
           </p>
-          <p className="caps mt-3 text-ink-faint">
+          <p className="caps mt-3 pl-[0.24em] text-ink-faint">
             Custom tailoring · Expert alterations
           </p>
         </div>

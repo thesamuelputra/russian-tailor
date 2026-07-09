@@ -111,7 +111,7 @@ export default function PhotosPage() {
           The Archive
         </h1>
         <p
-          className="caps rise mt-6 text-center text-ink-faint"
+          className="caps rise mt-6 pl-[0.24em] text-center text-ink-faint"
           style={{ "--stagger": 1 } as React.CSSProperties}
         >
           The shop, the fittings, the finished work
@@ -120,7 +120,7 @@ export default function PhotosPage() {
 
       <div className="mx-auto max-w-6xl px-5 pb-28 sm:px-8 sm:pb-36">
         {sections.map((section) => (
-          <section key={section.id} aria-labelledby={section.id} className="mt-24 sm:mt-32">
+          <section key={section.id} aria-labelledby={section.id} className="mt-16 sm:mt-32">
             <Reveal className="flex flex-wrap items-baseline justify-between gap-3 border-t border-line pt-6">
               <h2 id={section.id} className="caps text-ink-faint">
                 {section.title}
@@ -146,7 +146,7 @@ export default function PhotosPage() {
         ))}
 
         <Reveal>
-          <div className="mt-24 border-t border-line pt-10 text-center sm:mt-32">
+          <div className="mt-16 border-t border-line pt-10 text-center sm:mt-32">
             <p className="prose-journal mx-auto max-w-md">
               Like what you see? Call{" "}
               <a href={site.phoneHref} className="link-quiet">

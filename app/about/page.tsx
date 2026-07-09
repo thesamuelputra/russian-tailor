@@ -23,12 +23,12 @@ const chapters = [
   {
     title: "Sewing college.",
     body: "By Grade 8, she had attended sewing college in St. Petersburg and finished her high school education over the same four-year period.",
-    offset: "sm:ml-[22%]",
+    offset: "sm:ml-[10%]",
   },
   {
     title: "The apprenticeship.",
     body: "She went on to apprentice under a master tailor at a clothing manufacturer in St. Petersburg: a creative and discerning eye, trained the old way.",
-    offset: "sm:ml-[8%]",
+    offset: "sm:ml-[20%]",
   },
   {
     title: "View Street.",
@@ -48,7 +48,7 @@ export default function AboutPage() {
           Irina Sitonin
         </h1>
         <p
-          className="caps rise mt-6 text-center text-ink-faint"
+          className="caps rise mt-6 pl-[0.24em] text-center text-ink-faint"
           style={{ "--stagger": 1 } as React.CSSProperties}
         >
           Master tailor · Trained in St.&nbsp;Petersburg
@@ -105,7 +105,7 @@ export default function AboutPage() {
       {/* The chapters, staggered down the page like a journal */}
       <section
         aria-labelledby="chapters"
-        className="mx-auto mt-28 max-w-6xl px-5 sm:mt-36 sm:px-8"
+        className="mx-auto mt-20 max-w-6xl px-5 sm:mt-36 sm:px-8"
       >
         <Reveal className="border-t border-line pt-6">
           <h2 id="chapters" className="caps text-ink-faint">
@@ -125,7 +125,7 @@ export default function AboutPage() {
       </section>
 
       {/* Her word */}
-      <section aria-labelledby="her-word" className="mx-auto mt-28 max-w-6xl px-5 sm:mt-36 sm:px-8">
+      <section aria-labelledby="her-word" className="mx-auto mt-20 max-w-6xl px-5 sm:mt-36 sm:px-8">
         <h2 id="her-word" className="sr-only">
           In her words
         </h2>
@@ -136,15 +136,15 @@ export default function AboutPage() {
               all the customers, brides and bridesmaids so happy and excited is
               such a great thing.&rdquo;
             </p>
-            <footer className="caps mt-8 text-ink-faint">
-              The vivacious red-headed Irina
+            <footer className="caps mt-8 pl-[0.24em] text-ink-faint">
+              Irina Sitonin · Master tailor
             </footer>
           </blockquote>
         </Reveal>
       </section>
 
       {/* At the table */}
-      <section className="mx-auto mt-28 max-w-6xl px-5 pb-28 sm:mt-36 sm:px-8 sm:pb-36">
+      <section className="mx-auto mt-20 max-w-6xl px-5 pb-28 sm:mt-36 sm:px-8 sm:pb-36">
         <div className="grid gap-12 border-t border-line pt-12 lg:grid-cols-12 lg:gap-14">
           <div className="grid items-start gap-6 sm:grid-cols-2 lg:col-span-7">
             <Reveal>

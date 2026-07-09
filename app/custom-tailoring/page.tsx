@@ -57,8 +57,7 @@ export default function CustomTailoringPage() {
       <section aria-labelledby="mens" className="mx-auto max-w-6xl px-5 pt-10 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
           <Reveal className="lg:col-span-5 lg:pt-16">
-            <p className="caption">01</p>
-            <h2 id="mens" className="head mt-4 text-[length:var(--text-head)]">
+            <h2 id="mens" className="head text-[length:var(--text-head)]">
               Custom made men&rsquo;s clothes.
             </h2>
             <div className="prose-journal mt-6 max-w-md">
@@ -68,9 +67,6 @@ export default function CustomTailoringPage() {
                 quality and service. Their wardrobe is a perfect fit, tailored
                 with the finest in custom shirts, men&rsquo;s suits, slacks,
                 jackets, vests, and tuxedos.
-              </p>
-              <p>
-                <strong>Now that pleasure can be yours.</strong>
               </p>
             </div>
           </Reveal>
@@ -102,14 +98,14 @@ export default function CustomTailoringPage() {
       </section>
 
       {/* The cloth: a ruled register of houses */}
-      <section aria-labelledby="fabrics" className="mx-auto mt-24 max-w-6xl px-5 sm:mt-32 sm:px-8">
-        <Reveal className="border-y border-line py-10 text-center sm:py-12">
-          <h2 id="fabrics" className="caps text-ink-faint">
-            A thousand fabrics for custom tailoring
+      <section aria-labelledby="fabrics" className="mx-auto mt-16 max-w-6xl px-5 sm:mt-32 sm:px-8">
+        <Reveal className="grid gap-6 border-y border-line py-10 sm:py-12 lg:grid-cols-12 lg:gap-14">
+          <h2 id="fabrics" className="caps text-ink-faint lg:col-span-3">
+            A thousand fabrics
           </h2>
-          <ul className="mx-auto mt-8 flex max-w-4xl flex-wrap items-baseline justify-center gap-x-10 gap-y-4">
+          <ul className="flex flex-wrap items-baseline gap-x-8 gap-y-3 lg:col-span-8 lg:col-start-5">
             {fabricHouses.map((house) => (
-              <li key={house} className="display text-xl tracking-[0.12em] sm:text-2xl">
+              <li key={house} className="caps text-ink">
                 {house}
               </li>
             ))}
@@ -118,7 +114,7 @@ export default function CustomTailoringPage() {
       </section>
 
       {/* Women's: placements left, text right */}
-      <section aria-labelledby="womens" className="mx-auto mt-24 max-w-6xl px-5 sm:mt-32 sm:px-8">
+      <section aria-labelledby="womens" className="mx-auto mt-16 max-w-6xl px-5 sm:mt-32 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="order-2 grid items-start gap-6 sm:grid-cols-2 lg:order-1 lg:col-span-7">
             <Reveal>
@@ -127,7 +123,7 @@ export default function CustomTailoringPage() {
                   src={womensSuitRed}
                   alt="Red pinstripe women's pantsuit"
                   sizes="(min-width: 1024px) 28vw, 45vw"
-                  className="photo w-full"
+                  className="photo aspect-[4/5] w-full object-cover object-[center_18%]"
                 />
                 <figcaption className="caption mt-3">A red pinstripe pantsuit.</figcaption>
               </figure>
@@ -138,15 +134,14 @@ export default function CustomTailoringPage() {
                   src={womensDressSuit}
                   alt="Grey women's dress suit shown front and back"
                   sizes="(min-width: 1024px) 28vw, 45vw"
-                  className="photo w-full"
+                  className="photo aspect-[4/5] w-full object-cover"
                 />
                 <figcaption className="caption mt-3">A dress suit, front and back.</figcaption>
               </figure>
             </Reveal>
           </div>
           <Reveal delay={100} className="order-1 lg:order-2 lg:col-span-5 lg:pt-16">
-            <p className="caption">02</p>
-            <h2 id="womens" className="head mt-4 text-[length:var(--text-head)]">
+            <h2 id="womens" className="head text-[length:var(--text-head)]">
               Custom made women&rsquo;s clothes.
             </h2>
             <div className="prose-journal mt-6 max-w-md">
@@ -167,10 +162,9 @@ export default function CustomTailoringPage() {
       </section>
 
       {/* Made to measure shirts */}
-      <section aria-labelledby="shirts" className="mx-auto mt-24 max-w-6xl px-5 sm:mt-32 sm:px-8">
+      <section aria-labelledby="shirts" className="mx-auto mt-16 max-w-6xl px-5 sm:mt-32 sm:px-8">
         <Reveal className="border-t border-line pt-6">
-          <p className="caption">03</p>
-          <h2 id="shirts" className="head mt-4 text-[length:var(--text-head)]">
+          <h2 id="shirts" className="head text-[length:var(--text-head)]">
             Made to measure shirts.
           </h2>
           <p className="prose-journal mt-4 max-w-md">
@@ -216,7 +210,7 @@ export default function CustomTailoringPage() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto mt-24 max-w-6xl px-5 pb-28 sm:mt-32 sm:px-8 sm:pb-36">
+      <section className="mx-auto mt-16 max-w-6xl px-5 pb-28 sm:mt-32 sm:px-8 sm:pb-36">
         <div className="grid gap-12 border-t border-line pt-12 lg:grid-cols-12 lg:gap-14">
           <Reveal className="lg:col-span-5 lg:pt-10">
             <h2 className="head text-[length:var(--text-head)]">
@@ -239,12 +233,12 @@ export default function CustomTailoringPage() {
               </Link>
             </div>
           </Reveal>
-          <Reveal delay={120} className="lg:col-span-6 lg:col-start-7">
-            <figure>
+          <Reveal delay={120} className="lg:col-span-5 lg:col-start-8">
+            <figure className="max-w-md">
               <Image
                 src={jacketGold}
                 alt="Custom tailored tan jacket with patterned tie and pocket square"
-                sizes="(min-width: 1024px) 45vw, calc(100vw - 2.5rem)"
+                sizes="(min-width: 1024px) 38vw, 448px"
                 className="photo w-full"
               />
               <figcaption className="caption mt-3">

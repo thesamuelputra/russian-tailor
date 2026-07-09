@@ -102,19 +102,19 @@ export default function AlterationsPage() {
       <section
         id="bridal"
         aria-labelledby="womens-alterations"
-        className="mx-auto mt-24 max-w-6xl scroll-mt-16 px-5 sm:mt-32 sm:px-8"
+        className="mx-auto mt-16 max-w-6xl scroll-mt-16 px-5 sm:mt-32 sm:px-8"
       >
         <div className="grid gap-10 border-t border-line pt-12 lg:grid-cols-12 lg:gap-14">
-          <Reveal className="lg:col-span-6">
+          <Reveal className="max-w-md lg:col-span-5 lg:max-w-none">
             <figure>
               <Image
                 src={bridalFitting}
                 alt="Bride at the mirror while her wedding gown is fitted"
-                sizes="(min-width: 1024px) 45vw, calc(100vw - 2.5rem)"
+                sizes="(min-width: 1024px) 38vw, 448px"
                 className="photo w-full"
               />
               <figcaption className="caption mt-3">
-                Above: a wedding gown at its fitting.
+                A wedding gown at its fitting.
               </figcaption>
             </figure>
           </Reveal>
@@ -144,7 +144,7 @@ export default function AlterationsPage() {
       </section>
 
       {/* Motto */}
-      <section aria-labelledby="motto" className="mx-auto mt-28 max-w-6xl px-5 sm:mt-36 sm:px-8">
+      <section aria-labelledby="motto" className="mx-auto mt-20 max-w-6xl px-5 sm:mt-36 sm:px-8">
         <Reveal className="mx-auto max-w-3xl text-center">
           <h2 id="motto" className="caps text-ink-faint">
             Our motto
@@ -161,7 +161,7 @@ export default function AlterationsPage() {
       </section>
 
       {/* Close */}
-      <section className="mx-auto mt-28 max-w-6xl px-5 pb-28 sm:mt-36 sm:px-8 sm:pb-36">
+      <section className="mx-auto mt-20 max-w-6xl px-5 pb-28 sm:mt-36 sm:px-8 sm:pb-36">
         <div className="grid gap-12 border-t border-line pt-12 lg:grid-cols-12 lg:gap-14">
           <Reveal className="lg:col-span-5 lg:pt-10">
             <h2 className="head text-[length:var(--text-head)]">Bring it in.</h2>

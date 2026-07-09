@@ -62,15 +62,18 @@ export function Header() {
         </div>
       </div>
 
-      {/* The maison block: mark, wordmark, nav — all centred */}
+      {/* The maison block: mark, wordmark, nav — all centred.
+          On home the giant h1 is the wordmark; the header says the name once. */}
       <div className="hidden border-b border-line lg:block">
         <div className="mx-auto max-w-6xl px-8 pt-10 pb-0 text-center">
           <Shears className="mx-auto h-4 w-auto text-ink" aria-hidden />
-          <Link href="/" aria-label={`${site.name}, home`} className="mt-5 inline-block">
-            <span className="display text-[1.7rem] tracking-[0.32em]">
-              The Russian Tailor
-            </span>
-          </Link>
+          {pathname !== "/" && (
+            <Link href="/" aria-label={`${site.name}, home`} className="mt-5 inline-block">
+              <span className="display pl-[0.32em] text-[1.7rem] tracking-[0.32em]">
+                The Russian Tailor
+              </span>
+            </Link>
+          )}
           <nav aria-label="Main" className="mt-8 flex items-center justify-center gap-10 pb-5">
             {nav.map((item) => {
               const active = pathname === item.href;
@@ -79,10 +82,10 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`caps transition-colors ${
+                  className={`caps ${
                     active
                       ? "text-ink underline decoration-1 underline-offset-[0.5em]"
-                      : "text-ink-faint hover:text-ink"
+                      : "link-draw text-ink-faint hover:text-ink"
                   }`}
                 >
                   {item.label}
@@ -102,11 +105,15 @@ export function Header() {
           >
             Book
           </a>
-          <Link href="/" aria-label={`${site.name}, home`}>
-            <span className="display text-[0.95rem] tracking-[0.28em] sm:text-[1.05rem]">
-              The Russian Tailor
-            </span>
-          </Link>
+          {pathname === "/" ? (
+            <Shears className="h-4 w-auto text-ink" aria-hidden />
+          ) : (
+            <Link href="/" aria-label={`${site.name}, home`}>
+              <span className="display pl-[0.28em] text-[0.95rem] tracking-[0.28em] sm:text-[1.05rem]">
+                The Russian Tailor
+              </span>
+            </Link>
+          )}
           <button
             type="button"
             ref={toggleRef}

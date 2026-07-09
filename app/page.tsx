@@ -8,6 +8,7 @@ import irinaCutting from "@/public/images/irina-cutting.jpg";
 import suitNavy from "@/public/images/suit-navy.jpg";
 import bridalFitting from "@/public/images/bridal-fitting.jpg";
 import shirtRack from "@/public/images/shirt-rack.jpg";
+import promGroup from "@/public/images/prom-group.jpg";
 
 export const metadata = pageMeta({
   absoluteTitle: `${site.name} · Custom Tailoring & Expert Alterations in Victoria, BC`,
@@ -75,31 +76,38 @@ export default function HomePage() {
           aria-hidden
         />
 
-        <div className="grid gap-10 pt-10 lg:grid-cols-12 lg:gap-14">
+        <div className="grid gap-6 pt-10 lg:grid-cols-12 lg:gap-14">
+          <div
+            className="rise flex flex-col justify-end lg:col-span-3"
+            style={{ "--stagger": 3 } as React.CSSProperties}
+          >
+            <p className="caps max-w-56 text-ink-faint">
+              Custom tailoring &amp; expert alterations · Victoria, B.C.
+            </p>
+          </div>
           <figure
-            className="rise lg:col-span-7"
+            className="rise lg:col-span-9"
             style={{ "--stagger": 2 } as React.CSSProperties}
           >
             <Image
               src={irinaShop}
               alt={`${site.owner} at the counter of her shop on View Street, garments on the rails behind her`}
               priority
-              sizes="(min-width: 1024px) 55vw, calc(100vw - 2.5rem)"
-              className="photo w-full"
+              sizes="(min-width: 1024px) 66vw, 100vw"
+              className="photo photo-develop w-full"
             />
             <figcaption className="caption mt-3">
               Above: {site.owner} at the counter of her shop on View Street.
             </figcaption>
           </figure>
+        </div>
 
-          <div
-            className="rise flex flex-col justify-end pb-8 lg:col-span-5"
-            style={{ "--stagger": 3 } as React.CSSProperties}
-          >
-            <p className="caps text-ink-faint">
-              Custom tailoring &amp; expert alterations · Victoria, B.C.
-            </p>
-            <p className="prose-journal mt-6 max-w-sm">
+        <div
+          className="rise pt-12 lg:grid lg:grid-cols-12 lg:gap-14"
+          style={{ "--stagger": 4 } as React.CSSProperties}
+        >
+          <div className="lg:col-span-6 lg:col-start-6">
+            <p className="prose-journal max-w-md">
               The shop of master tailor {site.owner}: a lifetime of craft that
               began in St.&nbsp;Petersburg, now at the corner of View and
               Government Street in downtown Victoria.
@@ -118,7 +126,7 @@ export default function HomePage() {
       </section>
 
       {/* Services: a ruled grid, nothing raised, nothing boxed */}
-      <section aria-labelledby="services" className="mx-auto mt-24 max-w-6xl px-5 sm:mt-32 sm:px-8">
+      <section aria-labelledby="services" className="mx-auto mt-16 max-w-6xl px-5 sm:mt-32 sm:px-8">
         <Reveal>
           <h2 id="services" className="sr-only">
             Services
@@ -126,8 +134,7 @@ export default function HomePage() {
           <div className="grid border-y border-line md:grid-cols-3 md:divide-x md:divide-line max-md:divide-y max-md:divide-line">
             {services.map((s) => (
               <article key={s.n} className="flex flex-col py-10 md:px-10 md:first:pl-0 md:last:pr-0">
-                <p className="caption">{s.n}</p>
-                <h3 className="head mt-4 text-2xl">{s.title}</h3>
+                <h3 className="head text-2xl">{s.title}</h3>
                 <p className="prose-journal mt-4 max-w-xs flex-1">{s.note}</p>
                 <p className="mt-6">
                   <Link href={s.href} className="caps link-quiet">
@@ -140,70 +147,52 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      {/* The season: a journal notice, set narrow and centred */}
-      <section aria-labelledby="season" className="mx-auto mt-24 max-w-6xl px-5 sm:mt-32 sm:px-8">
-        <Reveal className="mx-auto max-w-xl text-center">
-          <h2 id="season" className="caps text-ink-faint">
+      {/* The season: a ruled journal notice */}
+      <section aria-labelledby="season" className="mx-auto mt-16 max-w-6xl px-5 sm:mt-32 sm:px-8">
+        <Reveal className="grid gap-6 border-y border-line py-10 sm:py-12 lg:grid-cols-12 lg:gap-14">
+          <h2 id="season" className="caps text-ink-faint lg:col-span-3">
             For the 2026 season
           </h2>
-          <div className="prose-journal mt-8 text-left sm:text-center">
-            <p>
-              The wedding season of 2026 has already begun. We highly recommend
-              that you don&rsquo;t bring in your dresses for alterations last
-              minute. We offer high quality alterations that will make you feel
-              and look stunning on your wedding day.
-            </p>
-            <p>
-              The graduation season of 2026 has already begun. Same advice:
-              don&rsquo;t leave your prom dress to the last minute.
+          <div className="lg:col-span-7 lg:col-start-5">
+            <div className="prose-journal max-w-md">
+              <p>
+                The wedding season of 2026 has already begun. We highly
+                recommend that you don&rsquo;t bring in your dresses for
+                alterations last minute.
+              </p>
+              <p>
+                The graduation season of 2026 has already begun. Same advice:
+                don&rsquo;t leave your prom dress to the last minute.
+              </p>
+            </div>
+            <p className="mt-6 text-sm text-ink-mid">
+              Call{" "}
+              <a href={site.phoneHref} className="link-quiet">
+                {site.phone}
+              </a>{" "}
+              today to book your appointment.
             </p>
           </div>
-          <p className="mt-8 text-sm text-ink-mid">
-            Call{" "}
-            <a href={site.phoneHref} className="link-quiet">
-              {site.phone}
-            </a>{" "}
-            today to book your appointment.
-          </p>
-        </Reveal>
-      </section>
-
-      {/* Her word, given room */}
-      <section aria-labelledby="her-word" className="mx-auto mt-28 max-w-6xl px-5 sm:mt-36 sm:px-8">
-        <h2 id="her-word" className="sr-only">
-          In her words
-        </h2>
-        <Reveal>
-          <blockquote className="mx-auto max-w-3xl text-center">
-            <p className="quote text-[length:var(--text-quote)]">
-              &ldquo;This work is my love, my life. And I like people. Seeing
-              all the customers, brides and bridesmaids so happy and excited is
-              such a great thing.&rdquo;
-            </p>
-            <footer className="caps mt-8 text-ink-faint">
-              Irina Sitonin · Master tailor
-            </footer>
-          </blockquote>
         </Reveal>
       </section>
 
       {/* The craft: asymmetric journal spread */}
-      <section aria-labelledby="craft" className="mx-auto mt-28 max-w-6xl px-5 sm:mt-36 sm:px-8">
+      <section aria-labelledby="craft" className="mx-auto mt-20 max-w-6xl px-5 sm:mt-36 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-          <Reveal className="lg:col-span-6">
+          <Reveal className="max-w-sm lg:col-span-4 lg:max-w-none">
             <figure>
               <Image
                 src={irinaCutting}
                 alt={`${site.owner} cutting suiting cloth at her worktable, measuring tape around her neck`}
-                sizes="(min-width: 1024px) 45vw, calc(100vw - 2.5rem)"
+                sizes="(min-width: 1024px) 30vw, 384px"
                 className="photo w-full"
               />
               <figcaption className="caption mt-3">
-                Above: at the worktable, cutting suiting cloth.
+                At the worktable, cutting suiting cloth.
               </figcaption>
             </figure>
           </Reveal>
-          <Reveal delay={120} className="lg:col-span-5 lg:col-start-8 lg:pt-24">
+          <Reveal delay={120} className="lg:col-span-6 lg:col-start-6 lg:pt-24">
             <h2 id="craft" className="head text-[length:var(--text-head)]">
               Cut by hand.
             </h2>
@@ -223,7 +212,7 @@ export default function HomePage() {
       </section>
 
       {/* Selected work: three placements, staggered like a lookbook page */}
-      <section aria-labelledby="selected" className="mx-auto mt-28 max-w-6xl px-5 sm:mt-36 sm:px-8">
+      <section aria-labelledby="selected" className="mx-auto mt-20 max-w-6xl px-5 sm:mt-36 sm:px-8">
         <Reveal className="flex flex-wrap items-baseline justify-between gap-4 border-t border-line pt-6">
           <h2 id="selected" className="caps text-ink-faint">
             Selected work
@@ -234,7 +223,7 @@ export default function HomePage() {
         </Reveal>
         <div className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-6 lg:gap-10">
           {selectedWork.map((item, i) => (
-            <Reveal key={item.alt} delay={i * 120} className={i === 1 ? "sm:mt-16" : i === 2 ? "sm:mt-32" : ""}>
+            <Reveal key={item.alt} delay={i * 120} className={i === 1 ? "sm:mt-12" : i === 2 ? "sm:mt-24" : ""}>
               <figure>
                 <Image
                   src={item.src}
@@ -249,8 +238,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* The occasion, given the full page width */}
+      <section aria-labelledby="occasion" className="mx-auto mt-20 max-w-6xl px-5 sm:mt-36 sm:px-8">
+        <h2 id="occasion" className="sr-only">
+          Occasion wear
+        </h2>
+        <Reveal className="lg:grid lg:grid-cols-12 lg:gap-14">
+          <figure className="lg:col-span-8 lg:col-start-3">
+            <Image
+              src={promGroup}
+              alt="A group in prom and grad dresses of many styles"
+              sizes="(min-width: 1024px) 60vw, 100vw"
+              className="photo aspect-[2/1] w-full object-cover"
+            />
+            <figcaption className="caption mt-3">
+              A season of prom and grad dresses.
+            </figcaption>
+          </figure>
+        </Reveal>
+      </section>
+
       {/* Visit */}
-      <section aria-labelledby="visit" className="mx-auto mt-28 max-w-6xl px-5 pb-28 sm:mt-36 sm:px-8 sm:pb-36">
+      <section aria-labelledby="visit" className="mx-auto mt-20 max-w-6xl px-5 pb-28 sm:mt-36 sm:px-8 sm:pb-36">
         <div className="grid gap-12 border-t border-line pt-12 lg:grid-cols-12 lg:gap-14">
           <Reveal className="lg:col-span-6">
             <h2 id="visit" className="head text-[length:var(--text-head)]">
@@ -259,8 +268,7 @@ export default function HomePage() {
             <p className="prose-journal mt-6 max-w-md">
               {site.address.street}, {site.address.city}{" "}
               {site.address.region}&nbsp;{site.address.postal}, at the corner of
-              View and Government Street. We will do everything we can to meet
-              your expectations.
+              View and Government Street.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-6">
               <a href={site.phoneHref} className="caps btn-line">

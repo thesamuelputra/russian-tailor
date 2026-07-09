@@ -37,15 +37,22 @@ Voices (globals.css, @layer components): `.display`, `.caps`, `.caption`,
 
 ## Photography
 
-- Journal pages run **black and white**: `.photo` = grayscale(1), one grade
-  across every image. This is also the great equalizer for mixed-quality
-  source photos.
-- The archive (/photos) keeps **muted film colour**: `.photo-film` =
-  saturate(.72).
-- Every placement carries a tiny archival caption below, BAINA-style. Two
-  tiers: lead/standalone figures take the full "Above: …" form; figures in
-  pairs and grids take a short note ("Dark suiting.").
-- No mats, no frames, no rotation, no hover color reveals.
+- Journal pages run **black and white with a faint warm cast**: `.photo` =
+  grayscale + sepia(.08) + contrast lift, one emulsion across snapshots and
+  stock alike (the great equalizer for mixed sources). Under a cursor the
+  cloth slowly returns to colour (1.1s filter ease, hover devices only).
+- **The signature moment**: the home hero carries `.photo-develop` and
+  develops from silver into colour ~1.4s after load, like a print coming up
+  in the tray. One page, one develop.
+- The archive (/photos) keeps **muted film colour**: `.photo-film`.
+- Captions are tiny archival notes below each placement. The page's lead
+  figure takes the full "Above: …" form, once per page; all other figures
+  take a short note ("Dark suiting.").
+- **Respect source resolution**: the 960px-wide photos (irina-shop,
+  prom-group, wedding-couple) may run full container width as cinematic
+  crops (aspect 21/9 or 21/8, object-cover); the ~330px fitting shots must
+  stay under ~450px displayed width or they go soft.
+- No mats, no frames, no rotation.
 
 ## Layout
 
@@ -63,6 +70,9 @@ Voices (globals.css, @layer components): `.display`, `.caps`, `.caption`,
 - One CSS-only page-load stagger (`.rise`, 14px fade-up, expo ease).
 - Scroll reveals are opacity + 12px translate only (`.reveal`), JS-gated via
   `html.js`, IntersectionObserver in components/Reveal.tsx.
+- Cross-document view transitions: 0.3s root cross-fade where supported
+  (`@view-transition`), off under reduced motion.
+- Nav hairlines draw in under the cursor (`.link-draw`, background-size).
 - One functional exception: the mobile menu toggle's two bars cross into an X
   (45° transform, disabled under reduced motion). Nothing else moves.
   `prefers-reduced-motion` disables all of it.
